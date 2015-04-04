@@ -42,6 +42,7 @@ var URL = "http://chart.finance.yahoo.com/z?s=" + companySymbol.split(": ")[1];
 function loadpics() {
       document.getElementById('Graph').src = URL;
       document.getElementById("Title").innerHTML = companyName.split(":")[1];
+      document.getElementById('logo').src = ”http://data.scrapelogo.com/www.google.com/logo”;
    }
 //alert("URL " + URL);
 </script>
@@ -104,6 +105,7 @@ console.log(test);
 
 <body onload="loadpics()">
 <h1 id="Title">Company<h1>
+<img id="logo">
 <img id="Graph">
 <p id="demo"> lalalaalllalalalal
 </script>
