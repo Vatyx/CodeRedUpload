@@ -26,16 +26,21 @@ function NewsFeed(item){
     "<p class='list-group-item-text'>"+ item.kwic+ "</p>"+
   "</li>";
 };
-var wikipediaURL = "'http://en.wikipedia.org/w/api.php?format=json&action=query&titles=" + window.name + "&prop=revisions&rvprop=content&callback=?';";
+var wikipediaURL = "'http://en.wikipedia.org/w/api.php?format=json&action=query&titles=" + name.split("|")[0]); + "&prop=revisions&rvprop=content&callback=?';";
 //$.getJSON(wikipediaURL, function(data));
 var wikipediaQuery = "http://en.wikipedia.org/w/api.php?action=query&titles=New_York_Yankees&prop=images";
-function getString() {
-  console.log(sessionStorage.getItem("companyName") + " !!!!!");
-  document.getElementById("printout").innerHTML = sessionStorage.getItem("companyName");
-}
+
 var temp = window.name;
 var companyName = name.split("|")[0]);
 var companySymbol = name.split("|")[1]);
+
+var wikipediaURL = "'http://en.wikipedia.org/w/api.php?format=json&action=query&titles=" + companyName + "&prop=revisions&rvprop=content&callback=?';";
+
+$.getJSON(wikipediaURL, function(data){
+  console.log(data.query.pages);
+
+});
+
 //window.name.value.split("|")[1]
 </script>
 
