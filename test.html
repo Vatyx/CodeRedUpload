@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Hello World - Google  Web Search API Sample</title>
+    <script src="https://www.google.com/jsapi"
+        type="text/javascript"></script>
+    <script language="Javascript" type="text/javascript">
+    //<!
+    google.load('search', '1');
+
+    function OnLoad() {
+      // Create a search control
+      var searchControl = new google.search.SearchControl();
+
+      // Add in a full set of searchers
+      //var localSearch = new google.search.WebSearch();
+      searchControl.addSearcher(new google.search.WebSearch());
+
+      // tell the searcher to draw itself and tell it where to attach
+      searchControl.draw(document.getElementById("searchcontrol"));
+
+      // execute an inital search
+      searchControl.execute("Google");
+
+var test = document.getElementsByClassName('gsc-url-bottom');
+console.log(test);
+
+// var objectHTMLCollection = document.getElementsByClassName('gs-bidi-start-align gs-visibleUrl gs-visibleUrl-short'),
+//     string = [].map.call( objectHTMLCollection, function(node){
+//         return node.textContent || node.innerText || "";
+//     }).join("");
+
+  (function recursiveWait( ){
+   var img = document.getElementsByClassName('gs-bidi-start-align gs-visibleUrl gs-visibleUrl-short');
+   if (!img.length) {
+      setTimeout(recursiveWait, 100);
+   } else {
+      console.log(img[0].outerText);
+   }
+}());
+
+
+     // console.log(test.getNamedItem[];
+//var test2 = document.getElementsByClassName('gs-bidi-start-align gs-visibleUrl gs-visibleUrl-short').appendChild( row ) ;
+     // console.log(test2);
+
+
+    }
+    google.setOnLoadCallback(OnLoad);
+
+    //]]>
+    </script>
+  </head>
+  <body>
+    <div id="searchcontrol" style="display:none">Loading</div>
+  </body>
+</html>
