@@ -42,7 +42,7 @@
                                 </span>
                             </div>
                         </div>
-              <a href="newsfeed.html" style="margin-top:20px" class="btn btn-default" id="button2">I'm Feeling Lucky</a>
+              <button href="#" style="margin-top:20px" class="btn btn-default" id="button2"> I'm Feeling Lucky</button>
             </div>
         </div>
 
@@ -63,7 +63,7 @@
 
     <script>
 
-    $('button2').click(function(){
+    $(document).on("click", "#button2", function(){
         sessionStorage.setItem("companyName", document.getElementById("text").value);
         console.log(sessionStorage.getItem("companyName"));
     });
