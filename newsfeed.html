@@ -132,7 +132,14 @@ console.log(test);
    } else {
       console.log(img[0].outerText);
       var website = img[0].outerText;
-   }
+      $.ajax({
+        type: "POST",
+        url: ~/"clearbitloopup.py",
+        data:{ param: website}
+      }).done(function (data){
+          console.log(data);
+      });
+   
 }());
 
 
