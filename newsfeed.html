@@ -19,26 +19,24 @@ function NewsFeed(item){
     var pic="";
     if(item.iurl !== "")
       pic ="<img src='"+item.iurl+"' height='50' width='50'>";
-
     return "<a href='"+item.url+"' class='list-group-item'>"+
     "<h4 class='list-group-item-heading'>"+
      pic+
      item.title+"</h4>"+
     "<p class='list-group-item-text'>"+ item.kwic+ "</p>"+
   "</li>";
-
-}
-
-var wikipediaURL = "'http://en.wikipedia.org/w/api.php?format=json&action=query&titles=" + window.name + "&prop=revisions&rvprop=content&callback=?';"
-
-$.getJSON(wikipediaURL, function(data){(
-
-)};
-
+};
+var wikipediaURL = "'http://en.wikipedia.org/w/api.php?format=json&action=query&titles=" + window.name + "&prop=revisions&rvprop=content&callback=?';";
+//$.getJSON(wikipediaURL, function(data));
+var wikipediaQuery = "http://en.wikipedia.org/w/api.php?action=query&titles=New_York_Yankees&prop=images";
 function getString() {
   console.log(sessionStorage.getItem("companyName") + " !!!!!");
   document.getElementById("printout").innerHTML = sessionStorage.getItem("companyName");
 }
+var temp = window.name;
+var companyName = name.split("|")[0]);
+var companySymbol = name.split("|")[1]);
+//window.name.value.split("|")[1]
 </script>
 
 <p id="printout"></p>
