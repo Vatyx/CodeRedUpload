@@ -96,6 +96,7 @@ $.ajax({
                     // suggestions.push("Name:"+ val.name+" #Symbol:"+val.symbol+" #Exchange:"+val.exchDisp);
                     // var symbol = val.symbol;
                     sessionStorage.setItem("companyName", val.name)
+                    sessionStorage.setItem("companySymbol", val.symbol)
                 });
             response(suggestions);
           }
