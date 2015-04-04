@@ -4,7 +4,7 @@
  <link href="http://bootswatch.com/slate/bootstrap.css" rel="stylesheet" type="text/css" />
  <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
   <meta charset="utf-8">
-  <title>JS Bin</title>
+  <title>Full Picture</title>
 </head>
 <body>
  <ul class="list-group">
@@ -33,6 +33,7 @@
 //   console.log(sessionStorage.getItem("companyName") + " !!!!!");
 //   document.getElementById("printout").innerHTML = sessionStorage.getItem("companyName");
 // }
+
 var temp = window.name;
 var companyName = temp.split("|")[0];
 var companySymbol = temp.split("|")[1];
@@ -88,8 +89,59 @@ console.log(test);
         url: "clearbitlookup.py",
         data:{ ourwebsite: website}
       }).success(function (data){
-          console.log("Got here!!");
           console.log(data);
+
+          var companyJSON = JSON.parse(data);
+
+          if(companyJSON.description != null)
+            var companyDescription = companyJSON.description;
+          else
+            var companyDescription = "Unable to find this data.";
+
+          if(companyJSON.alexa.usRank != null)
+            var companyAlexa = companyJSON.alexa.usRank;
+          else
+            var companyAlexa = "Unable to find this data.";
+
+          if(companyJSON.founders != null)
+            var companyFounders = companyJSON.founders;
+          else
+            var companyFounders = "Unable to find this data.";
+
+          if(companyJSON.location != null)
+            var companyLocation = companyJSON.location;
+          else
+            var companyLocation = "Unable to find this data.";
+
+          if(companyJSON.employees != null)
+            var companyEmployees = companyJSON.employees;
+          else
+            var companyEmployees = "Unable to find this data.";
+
+          if(companyJSON.logo != null)
+            var companyLogo = companyJSON.logo;
+          else
+            var companyLogo = "Unable to find this data.";
+
+          if(companyJSON.categories != null)
+            var companyCategories = companyJSON.categories;
+          else
+            var companyCategories = "Unable to find this data.";
+
+          if(companyJSON.legalName != null)
+            var companyLegalName = companyJSON.legalName;
+          else
+            var companyLegalName = "Unable to find this data";
+
+          console.log(companyDescription);
+          console.log(companyAlexa);
+          console.log(companyFounders);
+          console.log(companyLocation);
+          console.log(companyEmployees);
+          console.log(companyLogo);
+          console.log(companyCategories);
+          console.log(companyLegalName);
+
       });
    }
 }());
@@ -100,10 +152,6 @@ console.log(test);
     google.setOnLoadCallback(OnLoad);
     //]]>
     </script>
-
-
-
-
 
 <body onload="loadpics()">
 <h1 id="Title">Company<h1>
