@@ -42,7 +42,7 @@
                                 </span>
                             </div>
                         </div>
-              <button href="#" style="margin-top:20px" class="btn btn-default" id="button2"> I'm Feeling Lucky</button>
+              <a href="#" style="margin-top:20px" class="btn btn-default" id="button2"> I'm Feeling Lucky</a>
             </div>
         </div>
 
@@ -61,13 +61,58 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/custom.js"></script>
 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/yahoo/yahoo-min.js"></script>
+
     <script>
 
     $(document).on("click", "#button2", function(){
         sessionStorage.setItem("companyName", document.getElementById("text").value);
         console.log(sessionStorage.getItem("companyName"));
+
+
     });
-    </script>
+
+    var YAHOO = {
+        Finance: {
+            SymbolSuggest: {}
+        }
+    };
+
+$("#text").autocomplete({
+source: function (request, response) {
+var query=request.term;
+$.ajax({
+              type: "GET",
+              url: "http://d.yimg.com/autoc.finance.yahoo.com/autoc",
+              data: {query: query},
+              dataType: "jsonp",
+              jsonp : "callback",
+              jsonpCallback: "YAHOO.Finance.SymbolSuggest.ssCallback",
+          });
+          // call back function
+          YAHOO.Finance.SymbolSuggest.ssCallback = function (data) {
+                var suggestions = [];
+                //alert(JSON.stringify(data.ResultSet.Result));
+                $.each(data.ResultSet.Result, function(i, val) {
+                    suggestions.push(val.name);
+                    // suggestions.push("Name:"+ val.name+" #Symbol:"+val.symbol+" #Exchange:"+val.exchDisp);
+                    // var symbol = val.symbol;
+                });
+
+            response(suggestions);
+          }
+},
+minLength: 1,
+select: function (event, ui) {
+               //alert(ui.item.value.split("#")[1]);
+               $("#txtTicker").val(ui.item.value.split("#")[0]);
+               $("#stockvalue").val(ui.item.name);
+},
+});
+</script>
 
 </body>
 
