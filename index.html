@@ -19,6 +19,13 @@
     <link href="css/style.css" rel="stylesheet">
 	<link href="color/default.css" rel="stylesheet">
 
+    <script>
+        function saveString()
+        {
+            sessionStorage.setItem("companyName", document.getElementById("text").value);
+        }
+    </script>
+
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
@@ -37,7 +44,7 @@
                             <div class="input-group col-md-12">
                                 <input style="text-align:center" type="text" id="text" class="search-query form-control" placeholder="Get the full picture" />
                                 <span class="input-group-btn">
-                                    <button class="btn btn-danger" type="button">
+                                    <button class="btn btn-danger" type="button" onclick="saveString">
                                         <span class=" glyphicon glyphicon-search"></span>
                                     </button>
                                 </span>
@@ -61,14 +68,6 @@
 	<script src="js/wow.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="js/custom.js"></script>
-
-    <script type="text/javascript">
-
-
-
-
-
-    </script>
 
 </body>
 
