@@ -31,9 +31,9 @@ function NewsFeed(item){
 
 var wikipediaURL = "'http://en.wikipedia.org/w/api.php?format=json&action=query&titles=" + window.name + "&prop=revisions&rvprop=content&callback=?';"
 
-$.getJSON(wikipediaURL, function(data));
+$.getJSON(wikipediaURL, function(data){(
 
-var wikipediaQuery = "http://en.wikipedia.org/w/api.php?action=query&titles=New_York_Yankees&prop=images";
+)};
 
 function getString() {
   console.log(sessionStorage.getItem("companyName") + " !!!!!");
