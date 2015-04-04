@@ -36,7 +36,7 @@
                             <div class="input-group col-md-12">
                                 <input style="text-align:center" type="text" id="text" class="search-query form-control" placeholder="Get the full picture" />
                                 <span class="input-group-btn">
-                                    <button class="btn btn-danger" type="button" onclick="saveString()">
+                                    <button class="btn btn-danger" type="button" onclick="myFunction">
                                         <span class=" glyphicon glyphicon-search"></span>
                                     </button>
                                 </span>
@@ -62,11 +62,17 @@
     <script src="js/custom.js"></script>
 
     <script>
-    function saveString()
+
+function myFunction(a, b) {
+    return a * b;
+}
+
+
+    /*function saveString()
     {
         sessionStorage.setItem("companyName", document.getElementById("text").value)
         console.log(sessionStorage.getItem("companyName")
-    }
+    }*/
     </script>
 
 </body>
