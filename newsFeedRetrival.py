@@ -18,4 +18,4 @@ requestOpener = urllib2.build_opener()
 response = requestOpener.open(request) 
 results = json.load(response)
 print "Content-Type: text/html\n"
-print results
+print json.dumps(results).encode("UTF-8")
