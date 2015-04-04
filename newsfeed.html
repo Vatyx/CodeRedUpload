@@ -34,7 +34,14 @@ var temp = window.name;
 var companyName = name.split("|")[0]);
 var companySymbol = name.split("|")[1]);
 
+<<<<<<< HEAD
 var wikipediaURL = "'http://en.wikipedia.org/w/api.php?format=json&action=query&titles=" + companyName + "&prop=revisions&rvprop=content&callback=?';";
+=======
+var temp = window.name;
+var companyName = name.split("|")[0]);
+var companySymbol = name.split("|")[1]);
+//window.name.value.split("|")[1]
+>>>>>>> fc0d6800dfc5f968e3b0ef95db6aa577da7a8a2f
 
 $.getJSON(wikipediaURL, function(data){
   console.log(data.query.pages);
