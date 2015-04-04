@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <title>JS Bin</title>
 </head>
-<body onLoad="getString()">
+<body onLoad="wikipedia()">
  <ul class="list-group">
 </ul>
 
@@ -28,6 +28,8 @@ function NewsFeed(item){
   "</li>";
 
 }
+
+var wikipediaQuery = "http://en.wikipedia.org/w/api.php?action=query&titles=New_York_Yankees&prop=images";
 
 function getString() {
   console.log(sessionStorage.getItem("companyName") + " !!!!!");
