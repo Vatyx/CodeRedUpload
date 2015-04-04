@@ -309,7 +309,11 @@ hr {
 }
 
 #intro.intro {
-	padding:20% 0 0 0;
+	padding:15% 0 0 0;
+}
+
+.intro2{
+  background: url(../img/bg1.jpg) no-repeat top center
 }
 
 .intro .slogan {

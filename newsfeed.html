@@ -1,11 +1,29 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Full Picture</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="css/animate.css" rel="stylesheet" />
+    <!-- Squad theme CSS -->
+    <link href="css/style.css" rel="stylesheet">
+  <link href="color/default.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
  <link href="http://bootswatch.com/slate/bootstrap.css" rel="stylesheet" type="text/css" />
  <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
   <meta charset="utf-8">
-  <title>Full Picture</title>
-</head>
+
 <body>
  <ul class="list-group">
 </ul>
@@ -33,27 +51,19 @@
 //   console.log(sessionStorage.getItem("companyName") + " !!!!!");
 //   document.getElementById("printout").innerHTML = sessionStorage.getItem("companyName");
 // }
-
 var temp = window.name;
 var companyName = temp.split("|")[0];
 var companySymbol = temp.split("|")[1];
 //alert(companyName.split(": ")[1]);
 //
-var URL = "http://chart.finance.yahoo.com/z?s=" + companySymbol.split(": ")[1];
+var URL = "http://chart.finance.yahoo.com/z?s=" + companySymbol.split(": ")[1] + "&t=6m&q=l&l=on&z=l&p=m50,e200,v&a=p12,p&c=%5EDJI,EURUSD=X";
 function loadpics() {
       document.getElementById('Graph').src = URL;
+      document.getElementById('Graph').href = URL;
       document.getElementById("Title").innerHTML = companyName.split(":")[1];
    }
 //alert("URL " + URL);
 </script>
-
-
-
-
-
-
-
-
     <script src="https://www.google.com/jsapi"
         type="text/javascript"></script>
     <script language="Javascript" type="text/javascript">
@@ -77,61 +87,80 @@ console.log(test);
 //     }).join("");
   (function recursiveWait( ){
    var img = document.getElementsByClassName('gs-bidi-start-align gs-visibleUrl gs-visibleUrl-short');
-    
+
    if (!img.length) {
       setTimeout(recursiveWait, 100);
    } else {
       console.log(img[0].outerText);
       var website = img[0].outerText;
+      document.getElementById("Website").innerHTML = img[0].outerText;
 
       $.ajax({
         type: "POST",
         url: "clearbitlookup.py",
         data:{ ourwebsite: website}
       }).success(function (data){
+          console.log("Got here!!");
           console.log(data);
 
           var companyJSON = JSON.parse(data);
 
-          if(companyJSON.description != null)
+          if(companyJSON.description != null){
             var companyDescription = companyJSON.description;
-          else
-            var companyDescription = "Unable to find this data.";
+          document.getElementById("companyDescription").innerHTML =  "Company Description: "+companyDescription;}
+        //  else
+       //     var companyDescription = "Unable to find this data.";
 
-          if(companyJSON.alexa.usRank != null)
+          if(companyJSON.alexa.usRank != null){
             var companyAlexa = companyJSON.alexa.usRank;
-          else
-            var companyAlexa = "Unable to find this data.";
+          document.getElementById("companyAlexa").innerHTML =  "Company Alexa Ranking: "+companyAlexa;}
+        //  else
+        //    var companyAlexa = "Unable to find this data.";
 
-          if(companyJSON.founders != null)
+          if(companyJSON.founders.length != 0){
             var companyFounders = companyJSON.founders;
-          else
-            var companyFounders = "Unable to find this data.";
+          var arrayLength = companyFounders.length;
+          for (var i = 0; i < arrayLength; i++) {
+              document.getElementById("companyFounders").innerHTML =  "Company Founders: "+companyFounders[i];}
+          }
 
-          if(companyJSON.location != null)
+
+
+         // else
+        //    var companyFounders = "Unable to find this data.";
+
+          if(companyJSON.location != null){
             var companyLocation = companyJSON.location;
-          else
-            var companyLocation = "Unable to find this data.";
+          document.getElementById("companyLocation").innerHTML =  "Company Location: "+companyLocation;}
+         // else
+         //   var companyLocation = "Unable to find this data.";
 
-          if(companyJSON.employees != null)
+          if(companyJSON.employees != null){
             var companyEmployees = companyJSON.employees;
-          else
-            var companyEmployees = "Unable to find this data.";
+          document.getElementById("companyEmployees").innerHTML =  "Company Employees: "+companyEmployees;}
+          //else
+         //   var companyEmployees = "Unable to find this data.";
 
-          if(companyJSON.logo != null)
-            var companyLogo = companyJSON.logo;
-          else
-            var companyLogo = "Unable to find this data.";
+          if(companyJSON.logo != null){
+            var companyLogo = companyJSON.logo;}
+          // else
+          //   var companyLogo = "empty";
+            //var companyLogo = ”http://data.scrapelogo.com/+"website+"/logo”;
 
-          if(companyJSON.categories != null)
+          if(companyJSON.categories.length != 0){
             var companyCategories = companyJSON.categories;
-          else
-            var companyCategories = "Unable to find this data.";
+            var arrayLength = companyCategories.length;
+          for (var i = 0; i < arrayLength; i++) {
+              document.getElementById("companyCategories").innerHTML =  "Company Categories: "+companyCategories[i];}
+          }
+         // else
+          //  var companyCategories = "Unable to find this data.";
 
-          if(companyJSON.legalName != null)
+          if(companyJSON.legalName != null){
             var companyLegalName = companyJSON.legalName;
-          else
-            var companyLegalName = "Unable to find this data";
+          document.getElementById("companyLegalName").innerHTML =  "Legal Company Name: "+companyLegalName;}
+         // else
+           // var companyLegalName = "Unable to find this data";
 
           console.log(companyDescription);
           console.log(companyAlexa);
@@ -141,6 +170,8 @@ console.log(test);
           console.log(companyLogo);
           console.log(companyCategories);
           console.log(companyLegalName);
+
+          document.getElementById('logo').src = companyLogo;
 
       });
    }
@@ -153,11 +184,40 @@ console.log(test);
     //]]>
     </script>
 
-<body onload="loadpics()">
-<h1 id="Title">Company<h1>
-<img id="Graph">
-<p id="demo"> lalalaalllalalalal
-</script>
+
+
+
+
+<body class="intro2" onload="loadpics()">
+
+
+        <section id="home" style="h1.text-shadow:-1px 1px 6.2px rgba(9, 3, 1, 1); h2.text-shadow:-1px 1px 6.2px rgba(9, 3, 1, 1)" class="home-section text-center">
+          <img id="logo" style="width:6%"> </img>
+            <h1 id="Title" style="text-shadow:-1px 1px 6.2px rgba(9, 3, 1, 1);" >Company<h1>
+              <div class="slogan">
+              <h2 style="text-shadow:-1px 1px 6.2px rgba(9, 3, 1, 1);" id="Website">Website<h1></div>
+              </div>
+            </section>
+
+  <section class="pull-left" style="padding:20px; width:50%; margin-top:-30px; background: rgba(0, 0, 0, 0.54);">
+<div class = "col-8">
+  <h4 id="companyDescription" style="text-shadow:-1px 1px 6.2px rgba(9, 3, 1, 1);"></h4>
+  <h4 id="companyAlexa" style="text-shadow:-1px 1px 6.2px rgba(9, 3, 1, 1);"></h4>
+  <h4 id="companyFounders" style="text-shadow:-1px 1px 6.2px rgba(9, 3, 1, 1);"></h4>
+  <h4 id="companyLocation" style="text-shadow:-1px 1px 6.2px rgba(9, 3, 1, 1);"></h4>
+  <h4 id="companyEmployees" style="text-shadow:-1px 1px 6.2px rgba(9, 3, 1, 1);"></h4>
+  <h4 id="companyCategories" style="text-shadow:-1px 1px 6.2px rgba(9, 3, 1, 1);"></h4>
+  <h4 id="companyLegalName" style="text-shadow:-1px 1px 6.2px rgba(9, 3, 1, 1);"></h4>
+
+</br></br>
+<a class="twitter-timeline" href="https://twitter.com/CNN" data-widget-id="584477979213856769">Tweets by @CNN</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+
+  </section>
+  <img class="pull-right" style="padding:20px; width:50%; margin-top:-50px" id="Graph">
+    <a id="Graph" href="#"></a>
 
 <p id="printout"></p>
 <div id="searchcontrol" style="display:none">Loading</div>
