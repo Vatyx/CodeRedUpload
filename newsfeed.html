@@ -31,10 +31,10 @@ function NewsFeed(item){
 
 function getString() {
   console.log(sessionStorage.getItem("companyName") + " !!!!!");
-  return sessionStorage.getItem("companyName");
+  document.getElementById("printout").value = sessionStorage.getItem("companyName");
 }
 </script>
 
-<p> <script>getString()</script> </p>
+<p id="printout"></p>
 </body>
 </html>
