@@ -2,9 +2,16 @@
 
 	new WOW().init();
 
-	jQuery(window).load(function() { 
+	jQuery(window).load(function() {
 		jQuery("#preloader").delay(100).fadeOut("slow");
 		jQuery("#load").delay(100).fadeOut("slow");
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "http://chart.finance.yahoo.com/z?s=AAPL&t=6m&q=l&l=on&z=s&p=m50,m200", false);
+		xhr.send();
+
+		console.log(xhr.status);
+		console.log(xhr.statusText);
 	});
 
 
