@@ -42,7 +42,6 @@ var URL = "http://chart.finance.yahoo.com/z?s=" + companySymbol.split(": ")[1];
 function loadpics() {
       document.getElementById('Graph').src = URL;
       document.getElementById("Title").innerHTML = companyName.split(":")[1];
-      document.getElementById('logo').src = ”http://data.scrapelogo.com/www.google.com/logo”;
    }
 //alert("URL " + URL);
 </script>
@@ -77,18 +76,21 @@ console.log(test);
 //     }).join("");
   (function recursiveWait( ){
    var img = document.getElementsByClassName('gs-bidi-start-align gs-visibleUrl gs-visibleUrl-short');
-    $.ajax({
-        type: "POST",
-        url: "clearbitlookup.py",
-        data:{ param: website}
-      }).done(function (data){
-          console.log(img[0].outerText);
-      });
+    
    if (!img.length) {
       setTimeout(recursiveWait, 100);
    } else {
       console.log(img[0].outerText);
       var website = img[0].outerText;
+
+      $.ajax({
+        type: "POST",
+        url: "clearbitlookup.py",
+        data:{ ourwebsite: website}
+      }).success(function (data){
+          console.log("Got here!!");
+          console.log(data);
+      });
    }
 }());
      // console.log(test.getNamedItem[];
@@ -105,7 +107,6 @@ console.log(test);
 
 <body onload="loadpics()">
 <h1 id="Title">Company<h1>
-<img id="logo">
 <img id="Graph">
 <p id="demo"> lalalaalllalalalal
 </script>
