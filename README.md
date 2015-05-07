@@ -1,5 +1,5 @@
 # CodeRedUpload
 
-CodeREd
+CodeREd Hackathon 
 
-http://localbpgit.azurewebsites.net/
+http://fullpicture1.cloudapp.net/
